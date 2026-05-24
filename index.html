@@ -1657,7 +1657,7 @@
 
     function showGameOver() {
       bannerTitle.textContent = 'Game Over!';
-      const missed = missedWords.map(w => `<strong>${w.pinyin}</strong>`).join(', ');
+      const missed = missedWords.map(w => `${w.char} <strong>${w.pinyin}</strong>`).join(', ');
       bannerDesc.innerHTML = `Score: <strong>${score}</strong> &nbsp;|&nbsp; Accuracy: <strong>${accEl.textContent}</strong><br>Missed: ${missed}`;
       bannerBtn.textContent = 'Play Again';
       banner.style.display = 'block';
