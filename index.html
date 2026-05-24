@@ -1363,7 +1363,7 @@
     let gameState = 'banner';
     let wordQueue = [];
     let spawnTimer = 0;
-    const SPAWN_INTERVAL = 1500;
+    const SPAWN_INTERVAL = 2500;
 
     function normalizePinyin(p) {
       return p.toLowerCase().replace(/[\s-]/g, '');
@@ -1393,7 +1393,7 @@
         x, y: -50,
         word,
         color: wave.color,
-        speed: 0.5 + waveIdx * 0.1 + Math.random() * 0.2,
+        speed: 0.25 + waveIdx * 0.06 + Math.random() * 0.12,
         width: 70 + word.char.length * 18,
         height: 54,
         hit: false,
