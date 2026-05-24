@@ -1358,6 +1358,7 @@
     // ── Game state ──────────────────────────────────────────────
     let aliens = [], particles = [], bullets = [];
     let score = 0, lives = 3, waveIdx = 0;
+    let waveOrder = [];
     let totalAttempts = 0, correctAttempts = 0;
     let gameState = 'banner';
     let wordQueue = [];
@@ -1377,16 +1378,24 @@
       return a;
     }
 
+    function shuffleWaveOrder() {
+      waveOrder = shuffle(WAVES.map((_, i) => i));
+    }
+
+    function currentWave() {
+      return WAVES[waveOrder[waveIdx]];
+    }
+
     function initWave() {
       aliens = []; particles = []; bullets = [];
       spawnTimer = 0;
-      wordQueue = shuffle(WAVES[waveIdx].words);
+      wordQueue = shuffle(currentWave().words);
     }
 
     function spawnAlien() {
       if (wordQueue.length === 0) return;
       const word = wordQueue.shift();
-      const wave = WAVES[waveIdx];
+      const wave = currentWave();
       const x = 60 + Math.random() * (W - 120);
       aliens.push({
         x, y: -50,
@@ -1428,7 +1437,7 @@
         tx: alien.x, ty: alien.y,
         progress: 0,
         speed: 0.05,
-        color: WAVES[waveIdx].color
+        color: currentWave().color
       });
     }
 
@@ -1452,7 +1461,7 @@
     function drawShip() {
       const cx = W / 2, cy = H - 28;
       ctx.save();
-      ctx.shadowColor = WAVES[waveIdx].color;
+      ctx.shadowColor = currentWave().color;
       ctx.shadowBlur = 14;
       ctx.fillStyle = '#c0d8ff';
       ctx.beginPath();
@@ -1462,7 +1471,7 @@
       ctx.lineTo(cx + 14, cy + 12);
       ctx.closePath();
       ctx.fill();
-      ctx.fillStyle = WAVES[waveIdx].color;
+      ctx.fillStyle = currentWave().color;
       ctx.beginPath();
       ctx.arc(cx, cy - 4, 5, 0, Math.PI * 2);
       ctx.fill();
@@ -1635,8 +1644,9 @@
     }
 
     function showWaveBanner() {
-      const w = WAVES[waveIdx];
-      bannerTitle.textContent = w.name;
+      const w = currentWave();
+      const theme = w.name.replace(/^Wave \d+: /, '');
+      bannerTitle.textContent = `Wave ${waveIdx + 1}: ${theme}`;
       bannerDesc.innerHTML = `${w.words.length} words in this wave — type the <strong>pinyin</strong> for each character!<br>Watch out — they cross the danger line and you lose a life!`;
       bannerBtn.textContent = waveIdx === 0 ? 'Start Wave' : 'Next Wave!';
       banner.style.display = 'block';
@@ -1662,6 +1672,7 @@
     bannerBtn.addEventListener('click', () => {
       if (bannerBtn.textContent === 'Play Again') {
         score = 0; lives = 3; waveIdx = 0;
+        shuffleWaveOrder();
         totalAttempts = 0; correctAttempts = 0;
         scoreEl.textContent = '0'; accEl.textContent = '—';
         updateLivesDisplay();
@@ -1684,6 +1695,7 @@
     });
 
     updateLivesDisplay();
+    shuffleWaveOrder();
     showWaveBanner();
     requestAnimationFrame(loop);
   </script>
