@@ -1359,6 +1359,7 @@
     let aliens = [], particles = [], bullets = [];
     let score = 0, lives = 3, waveIdx = 0;
     let waveOrder = [];
+    let missedWords = [];
     let totalAttempts = 0, correctAttempts = 0;
     let gameState = 'banner';
     let wordQueue = [];
@@ -1613,6 +1614,7 @@
           }
           if (!a.hit && a.y > H - 55) {
             a.alive = false;
+            missedWords.push(a.word);
             lives--;
             updateLivesDisplay();
             addParticles(a.x, a.y, '#ff4444');
@@ -1655,7 +1657,8 @@
 
     function showGameOver() {
       bannerTitle.textContent = 'Game Over!';
-      bannerDesc.innerHTML = `Score: <strong>${score}</strong> &nbsp;|&nbsp; Accuracy: <strong>${accEl.textContent}</strong><br>Keep practising your Chinese!`;
+      const missed = missedWords.map(w => `<strong>${w.pinyin}</strong>`).join(', ');
+      bannerDesc.innerHTML = `Score: <strong>${score}</strong> &nbsp;|&nbsp; Accuracy: <strong>${accEl.textContent}</strong><br>Missed: ${missed}`;
       bannerBtn.textContent = 'Play Again';
       banner.style.display = 'block';
       input.disabled = true;
@@ -1672,6 +1675,7 @@
     bannerBtn.addEventListener('click', () => {
       if (bannerBtn.textContent === 'Play Again') {
         score = 0; lives = 3; waveIdx = 0;
+        missedWords = [];
         shuffleWaveOrder();
         totalAttempts = 0; correctAttempts = 0;
         scoreEl.textContent = '0'; accEl.textContent = '—';
