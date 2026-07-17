@@ -105,6 +105,40 @@
       line-height: 1.6;
     }
 
+    #wave-picker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 16px;
+    }
+
+    #wave-picker label {
+      color: #7090b0;
+      font-size: 12px;
+    }
+
+    #wave-select {
+      background: rgba(30, 30, 80, 0.8);
+      border: 0.5px solid rgba(100, 150, 255, 0.5);
+      border-radius: 8px;
+      color: #c0d8ff;
+      padding: 8px 12px;
+      font-size: 14px;
+      outline: none;
+      min-width: 220px;
+      cursor: pointer;
+    }
+
+    #wave-select:focus {
+      border-color: rgba(100, 180, 255, 0.8);
+    }
+
+    #wave-select option {
+      background: #0a0a28;
+      color: #c0d8ff;
+    }
+
     #wave-banner button {
       background: rgba(60, 100, 220, 0.3);
       border: 0.5px solid rgba(100, 150, 255, 0.5);
@@ -149,6 +183,10 @@
     <div id="wave-banner">
       <h2 id="banner-title">Wave 1: Food & Drink</h2>
       <p id="banner-desc">Type the pinyin for each Chinese character to destroy the alien!</p>
+      <div id="wave-picker">
+        <label for="wave-select">Start with theme</label>
+        <select id="wave-select"></select>
+      </div>
       <button id="banner-btn">Start Wave</button>
     </div>
 
@@ -1342,10 +1380,29 @@
     const bannerTitle = document.getElementById('banner-title');
     const bannerDesc = document.getElementById('banner-desc');
     const bannerBtn = document.getElementById('banner-btn');
+    const wavePicker = document.getElementById('wave-picker');
+    const waveSelect = document.getElementById('wave-select');
     const scoreEl = document.getElementById('score-display');
     const waveEl = document.getElementById('wave-display');
     const accEl = document.getElementById('acc-display');
     const livesEl = document.getElementById('lives-display');
+
+    function themeName(wave) {
+      return wave.name.replace(/^Wave \d+: /, '');
+    }
+
+    (function populateWaveSelect() {
+      const randomOpt = document.createElement('option');
+      randomOpt.value = 'random';
+      randomOpt.textContent = 'Random (all themes)';
+      waveSelect.appendChild(randomOpt);
+      WAVES.forEach((w, i) => {
+        const opt = document.createElement('option');
+        opt.value = String(i);
+        opt.textContent = themeName(w);
+        waveSelect.appendChild(opt);
+      });
+    })();
 
     let W, H;
     function resize() {
@@ -1379,8 +1436,20 @@
       return a;
     }
 
-    function shuffleWaveOrder() {
-      waveOrder = shuffle(WAVES.map((_, i) => i));
+    function shuffleWaveOrder(preferredIdx) {
+      if (preferredIdx == null || Number.isNaN(preferredIdx)) {
+        waveOrder = shuffle(WAVES.map((_, i) => i));
+        return;
+      }
+      const rest = shuffle(WAVES.map((_, i) => i).filter(i => i !== preferredIdx));
+      waveOrder = [preferredIdx, ...rest];
+    }
+
+    function applyWaveSelection() {
+      const val = waveSelect.value;
+      if (val === 'random') shuffleWaveOrder();
+      else shuffleWaveOrder(Number(val));
+      waveIdx = 0;
     }
 
     function currentWave() {
@@ -1647,10 +1716,10 @@
 
     function showWaveBanner() {
       const w = currentWave();
-      const theme = w.name.replace(/^Wave \d+: /, '');
-      bannerTitle.textContent = `Wave ${waveIdx + 1}: ${theme}`;
+      bannerTitle.textContent = `Wave ${waveIdx + 1}: ${themeName(w)}`;
       bannerDesc.innerHTML = `${w.words.length} words in this wave — type the <strong>pinyin</strong> for each character!<br>Watch out — they cross the danger line and you lose a life!`;
       bannerBtn.textContent = waveIdx === 0 ? 'Start Wave' : 'Next Wave!';
+      wavePicker.style.display = waveIdx === 0 ? 'flex' : 'none';
       banner.style.display = 'block';
       input.disabled = true;
     }
@@ -1660,6 +1729,7 @@
       const missed = missedWords.map(w => `${w.char} <strong>${w.pinyin}</strong>`).join(', ');
       bannerDesc.innerHTML = `Score: <strong>${score}</strong> &nbsp;|&nbsp; Accuracy: <strong>${accEl.textContent}</strong><br>Missed: ${missed}`;
       bannerBtn.textContent = 'Play Again';
+      wavePicker.style.display = 'flex';
       banner.style.display = 'block';
       input.disabled = true;
     }
@@ -1668,18 +1738,28 @@
       bannerTitle.textContent = '🎉 You won!';
       bannerDesc.innerHTML = `All waves cleared!<br>Score: <strong>${score}</strong> &nbsp;|&nbsp; Accuracy: <strong>${accEl.textContent}</strong>`;
       bannerBtn.textContent = 'Play Again';
+      wavePicker.style.display = 'flex';
       banner.style.display = 'block';
       input.disabled = true;
     }
 
+    waveSelect.addEventListener('change', () => {
+      if (gameState !== 'playing') {
+        applyWaveSelection();
+        if (bannerBtn.textContent === 'Start Wave') showWaveBanner();
+      }
+    });
+
     bannerBtn.addEventListener('click', () => {
       if (bannerBtn.textContent === 'Play Again') {
-        score = 0; lives = 3; waveIdx = 0;
+        score = 0; lives = 3;
         missedWords = [];
-        shuffleWaveOrder();
+        applyWaveSelection();
         totalAttempts = 0; correctAttempts = 0;
         scoreEl.textContent = '0'; accEl.textContent = '—';
         updateLivesDisplay();
+      } else if (bannerBtn.textContent === 'Start Wave') {
+        applyWaveSelection();
       }
       banner.style.display = 'none';
       input.disabled = false;
@@ -1699,7 +1779,7 @@
     });
 
     updateLivesDisplay();
-    shuffleWaveOrder();
+    applyWaveSelection();
     showWaveBanner();
     requestAnimationFrame(loop);
   </script>
