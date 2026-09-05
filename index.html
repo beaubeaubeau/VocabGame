@@ -212,7 +212,24 @@
     // ── Vocabulary (Ni Hao Ma 1000 Common Chinese Words) ────────
     // https://nihaoma-mandarin.com/pedagogy-corner/1000-common-chinese-words/
     const WAVES = [
-      // ── Wave 1: Greetings (29 words) ─────────────────────────
+      // ── Wave 0: Common misses (9 words) ────────────────────────
+      {
+        name: "Wave 0: Common misses",
+        color: "#ff66aa",
+        words: [
+          { char: "保重", pinyin: "baozhong", meaning: "take care" },
+          { char: "介绍", pinyin: "jieshao", meaning: "introduce" },
+          { char: "优点", pinyin: "youdian", meaning: "strength" },
+          { char: "缺点", pinyin: "quedian", meaning: "weakness" },
+          { char: "远", pinyin: "yuan", meaning: "far" },
+          { char: "近", pinyin: "jin", meaning: "near" },
+          { char: "宿舍", pinyin: "sushe", meaning: "dormitory" },
+          { char: "别墅", pinyin: "bieshu", meaning: "villa" },
+          { char: "派出所", pinyin: "paichusuo", meaning: "police station" }
+        ]
+      },
+
+      // ── Wave 1: Greetings (29 words) ───────────────────────────
       {
         name: "Wave 1: Greetings",
         color: "#ff9955",
@@ -249,9 +266,9 @@
         ]
       },
 
-      // ── Wave 2: Self-Introduction (50 words) ─────────────────
+      // ── Wave 2: Self-Introduction (Part 1) (25 words) ──────────
       {
-        name: "Wave 2: Self-Introduction",
+        name: "Wave 2: Self-Introduction (Part 1)",
         color: "#55aaff",
         words: [
           { char: "兴趣", pinyin: "xingqu", meaning: "hobby" },
@@ -278,7 +295,15 @@
           { char: "女", pinyin: "nv", meaning: "female" },
           { char: "邮箱", pinyin: "youxiang", meaning: "email" },
           { char: "毕业", pinyin: "biye", meaning: "graduate" },
-          { char: "家乡", pinyin: "jiaxiang", meaning: "hometown" },
+          { char: "家乡", pinyin: "jiaxiang", meaning: "hometown" }
+        ]
+      },
+
+      // ── Wave 2: Self-Introduction (Part 2) (25 words) ──────────
+      {
+        name: "Wave 2: Self-Introduction (Part 2)",
+        color: "#55aaff",
+        words: [
           { char: "公司", pinyin: "gongsi", meaning: "company" },
           { char: "工作", pinyin: "gongzuo", meaning: "job" },
           { char: "喜欢", pinyin: "xihuan", meaning: "like" },
@@ -307,9 +332,9 @@
         ]
       },
 
-      // ── Wave 3: Places (89 words) ────────────────────────────
+      // ── Wave 3: Places (Part 1) (30 words) ─────────────────────
       {
-        name: "Wave 3: Places",
+        name: "Wave 3: Places (Part 1)",
         color: "#aa66ff",
         words: [
           { char: "这里", pinyin: "zheli", meaning: "here" },
@@ -341,7 +366,15 @@
           { char: "游泳池", pinyin: "youyongchi", meaning: "swimming pool" },
           { char: "体育场", pinyin: "tiyuchang", meaning: "stadium" },
           { char: "公共汽车站", pinyin: "gonggongqichezhan", meaning: "bus stop" },
-          { char: "地铁站", pinyin: "ditiezhan", meaning: "subway station" },
+          { char: "地铁站", pinyin: "ditiezhan", meaning: "subway station" }
+        ]
+      },
+
+      // ── Wave 3: Places (Part 2) (30 words) ─────────────────────
+      {
+        name: "Wave 3: Places (Part 2)",
+        color: "#aa66ff",
+        words: [
           { char: "火车站", pinyin: "huochezhan", meaning: "train station" },
           { char: "机场", pinyin: "jichang", meaning: "airport" },
           { char: "天桥", pinyin: "tianqiao", meaning: "overpass" },
@@ -371,7 +404,15 @@
           { char: "马路", pinyin: "malu", meaning: "main road" },
           { char: "人行道", pinyin: "renxingdao", meaning: "sidewalk" },
           { char: "红绿灯", pinyin: "honglvdeng", meaning: "traffic light" },
-          { char: "方向", pinyin: "fangxiang", meaning: "direction" },
+          { char: "方向", pinyin: "fangxiang", meaning: "direction" }
+        ]
+      },
+
+      // ── Wave 3: Places (Part 3) (29 words) ─────────────────────
+      {
+        name: "Wave 3: Places (Part 3)",
+        color: "#aa66ff",
+        words: [
           { char: "山", pinyin: "shan", meaning: "mountain" },
           { char: "河", pinyin: "he", meaning: "river" },
           { char: "湖", pinyin: "hu", meaning: "lake" },
@@ -404,9 +445,9 @@
         ]
       },
 
-      // ── Wave 4: Jobs & Occupations (80 words) ────────────────
+      // ── Wave 4: Jobs & Occupations (Part 1) (27 words) ─────────
       {
-        name: "Wave 4: Jobs & Occupations",
+        name: "Wave 4: Jobs & Occupations (Part 1)",
         color: "#55dd88",
         words: [
           { char: "医生", pinyin: "yisheng", meaning: "doctor" },
@@ -435,7 +476,15 @@
           { char: "老板", pinyin: "laoban", meaning: "boss" },
           { char: "经理", pinyin: "jingli", meaning: "manager" },
           { char: "职员", pinyin: "zhiyuan", meaning: "office worker" },
-          { char: "秘书", pinyin: "mishu", meaning: "secretary" },
+          { char: "秘书", pinyin: "mishu", meaning: "secretary" }
+        ]
+      },
+
+      // ── Wave 4: Jobs & Occupations (Part 2) (27 words) ─────────
+      {
+        name: "Wave 4: Jobs & Occupations (Part 2)",
+        color: "#55dd88",
+        words: [
           { char: "会计", pinyin: "kuaiji", meaning: "accountant" },
           { char: "出纳", pinyin: "chuna", meaning: "cashier" },
           { char: "人力资源专员", pinyin: "renliziyuanzhuanyuan", meaning: "hr specialist" },
@@ -462,7 +511,15 @@
           { char: "导演", pinyin: "daoyan", meaning: "director" },
           { char: "编剧", pinyin: "bianju", meaning: "screenwriter" },
           { char: "翻译", pinyin: "fanyi", meaning: "translator" },
-          { char: "审计师", pinyin: "shenjishi", meaning: "auditor" },
+          { char: "审计师", pinyin: "shenjishi", meaning: "auditor" }
+        ]
+      },
+
+      // ── Wave 4: Jobs & Occupations (Part 3) (26 words) ─────────
+      {
+        name: "Wave 4: Jobs & Occupations (Part 3)",
+        color: "#55dd88",
+        words: [
           { char: "教练", pinyin: "jiaolian", meaning: "coach" },
           { char: "运动员", pinyin: "yundongyuan", meaning: "athlete" },
           { char: "导游", pinyin: "daoyou", meaning: "tour guide" },
@@ -492,9 +549,9 @@
         ]
       },
 
-      // ── Wave 5: Shopping (50 words) ──────────────────────────
+      // ── Wave 5: Shopping (Part 1) (25 words) ───────────────────
       {
-        name: "Wave 5: Shopping",
+        name: "Wave 5: Shopping (Part 1)",
         color: "#ff5577",
         words: [
           { char: "购物", pinyin: "gouwu", meaning: "shopping" },
@@ -521,7 +578,15 @@
           { char: "找钱", pinyin: "zhaoqian", meaning: "give change" },
           { char: "收据", pinyin: "shouju", meaning: "receipt" },
           { char: "发票", pinyin: "fapiao", meaning: "invoice" },
-          { char: "退货", pinyin: "tuihuo", meaning: "return goods" },
+          { char: "退货", pinyin: "tuihuo", meaning: "return goods" }
+        ]
+      },
+
+      // ── Wave 5: Shopping (Part 2) (25 words) ───────────────────
+      {
+        name: "Wave 5: Shopping (Part 2)",
+        color: "#ff5577",
+        words: [
           { char: "换货", pinyin: "huanhuo", meaning: "exchange goods" },
           { char: "保修", pinyin: "baoxiu", meaning: "warranty" },
           { char: "促销", pinyin: "cuxiao", meaning: "promotion" },
@@ -550,7 +615,7 @@
         ]
       },
 
-      // ── Wave 6: Activities (49 words) ────────────────────────
+      // ── Wave 6: Activities (49 words) ──────────────────────────
       {
         name: "Wave 6: Activities",
         color: "#ffcc44",
@@ -607,9 +672,9 @@
         ]
       },
 
-      // ── Wave 7: Food & Eating (70 words) ─────────────────────
+      // ── Wave 7: Food & Eating (Part 1) (35 words) ──────────────
       {
-        name: "Wave 7: Food & Eating",
+        name: "Wave 7: Food & Eating (Part 1)",
         color: "#44ddcc",
         words: [
           { char: "吃", pinyin: "chi", meaning: "eat" },
@@ -646,7 +711,15 @@
           { char: "茶", pinyin: "cha", meaning: "tea" },
           { char: "咖啡", pinyin: "kafei", meaning: "coffee" },
           { char: "果汁", pinyin: "guozhi", meaning: "juice" },
-          { char: "牛奶", pinyin: "niunai", meaning: "milk" },
+          { char: "牛奶", pinyin: "niunai", meaning: "milk" }
+        ]
+      },
+
+      // ── Wave 7: Food & Eating (Part 2) (35 words) ──────────────
+      {
+        name: "Wave 7: Food & Eating (Part 2)",
+        color: "#44ddcc",
+        words: [
           { char: "啤酒", pinyin: "pijiu", meaning: "beer" },
           { char: "饭", pinyin: "fan", meaning: "rice/meal" },
           { char: "米饭", pinyin: "mifan", meaning: "white rice" },
@@ -685,7 +758,7 @@
         ]
       },
 
-      // ── Wave 8: Family (30 words) ────────────────────────────
+      // ── Wave 8: Family (30 words) ──────────────────────────────
       {
         name: "Wave 8: Family",
         color: "#cc77ff",
@@ -723,7 +796,7 @@
         ]
       },
 
-      // ── Wave 9: Colors (30 words) ────────────────────────────
+      // ── Wave 9: Colors (30 words) ──────────────────────────────
       {
         name: "Wave 9: Colors",
         color: "#77ff77",
@@ -761,7 +834,7 @@
         ]
       },
 
-      // ── Wave 10: Fruits (45 words) ───────────────────────────
+      // ── Wave 10: Fruits (45 words) ─────────────────────────────
       {
         name: "Wave 10: Fruits",
         color: "#ff7744",
@@ -814,7 +887,7 @@
         ]
       },
 
-      // ── Wave 11: Dates & Time (36 words) ─────────────────────
+      // ── Wave 11: Dates & Time (36 words) ───────────────────────
       {
         name: "Wave 11: Dates & Time",
         color: "#5599ff",
@@ -858,7 +931,7 @@
         ]
       },
 
-      // ── Wave 12: Numbers (24 words) ──────────────────────────
+      // ── Wave 12: Numbers (24 words) ────────────────────────────
       {
         name: "Wave 12: Numbers",
         color: "#ff88cc",
@@ -890,7 +963,7 @@
         ]
       },
 
-      // ── Wave 13: Emotions (46 words) ─────────────────────────
+      // ── Wave 13: Emotions (46 words) ───────────────────────────
       {
         name: "Wave 13: Emotions",
         color: "#88cc44",
@@ -944,9 +1017,9 @@
         ]
       },
 
-      // ── Wave 14: Sports (60 words) ───────────────────────────
+      // ── Wave 14: Sports (Part 1) (30 words) ────────────────────
       {
-        name: "Wave 14: Sports",
+        name: "Wave 14: Sports (Part 1)",
         color: "#dd6655",
         words: [
           { char: "体育", pinyin: "tiyu", meaning: "sports" },
@@ -978,7 +1051,15 @@
           { char: "冲浪", pinyin: "chonglang", meaning: "surfing" },
           { char: "举办", pinyin: "juban", meaning: "to host (event)" },
           { char: "运动会", pinyin: "yundonghui", meaning: "sports meet" },
-          { char: "田径", pinyin: "tianjing", meaning: "track and field" },
+          { char: "田径", pinyin: "tianjing", meaning: "track and field" }
+        ]
+      },
+
+      // ── Wave 14: Sports (Part 2) (30 words) ────────────────────
+      {
+        name: "Wave 14: Sports (Part 2)",
+        color: "#dd6655",
+        words: [
           { char: "裁判", pinyin: "caipan", meaning: "referee" },
           { char: "球队", pinyin: "qiudui", meaning: "sports team" },
           { char: "比赛", pinyin: "bisai", meaning: "match" },
@@ -1012,9 +1093,9 @@
         ]
       },
 
-      // ── Wave 15: Descriptive Words (70 words) ────────────────
+      // ── Wave 15: Descriptive Words (Part 1) (35 words) ─────────
       {
-        name: "Wave 15: Descriptive Words",
+        name: "Wave 15: Descriptive Words (Part 1)",
         color: "#66aaff",
         words: [
           { char: "大", pinyin: "da", meaning: "big" },
@@ -1051,7 +1132,15 @@
           { char: "冷", pinyin: "leng", meaning: "cold" },
           { char: "粗", pinyin: "cu", meaning: "coarse" },
           { char: "湿", pinyin: "shi", meaning: "wet" },
-          { char: "干", pinyin: "gan", meaning: "dry" },
+          { char: "干", pinyin: "gan", meaning: "dry" }
+        ]
+      },
+
+      // ── Wave 15: Descriptive Words (Part 2) (35 words) ─────────
+      {
+        name: "Wave 15: Descriptive Words (Part 2)",
+        color: "#66aaff",
+        words: [
           { char: "直", pinyin: "zhi", meaning: "straight" },
           { char: "弯", pinyin: "wan", meaning: "curved" },
           { char: "平坦", pinyin: "pingtan", meaning: "flat" },
@@ -1090,9 +1179,9 @@
         ]
       },
 
-      // ── Wave 16: Countries (50 words) ────────────────────────
+      // ── Wave 16: Countries (Part 1) (25 words) ─────────────────
       {
-        name: "Wave 16: Countries",
+        name: "Wave 16: Countries (Part 1)",
         color: "#ccaa33",
         words: [
           { char: "中国", pinyin: "zhongguo", meaning: "china" },
@@ -1119,7 +1208,15 @@
           { char: "智利", pinyin: "zhili", meaning: "chile" },
           { char: "秘鲁", pinyin: "bilu", meaning: "peru" },
           { char: "哥伦比亚", pinyin: "gelunbiya", meaning: "colombia" },
-          { char: "英国", pinyin: "yingguo", meaning: "united kingdom" },
+          { char: "英国", pinyin: "yingguo", meaning: "united kingdom" }
+        ]
+      },
+
+      // ── Wave 16: Countries (Part 2) (25 words) ─────────────────
+      {
+        name: "Wave 16: Countries (Part 2)",
+        color: "#ccaa33",
+        words: [
           { char: "法国", pinyin: "faguo", meaning: "france" },
           { char: "德国", pinyin: "deguo", meaning: "germany" },
           { char: "意大利", pinyin: "yidali", meaning: "italy" },
@@ -1148,9 +1245,9 @@
         ]
       },
 
-      // ── Wave 17: Animals (50 words) ──────────────────────────
+      // ── Wave 17: Animals (Part 1) (25 words) ───────────────────
       {
-        name: "Wave 17: Animals",
+        name: "Wave 17: Animals (Part 1)",
         color: "#aa55cc",
         words: [
           { char: "狗", pinyin: "gou", meaning: "dog" },
@@ -1177,7 +1274,15 @@
           { char: "松鼠", pinyin: "songshu", meaning: "squirrel" },
           { char: "蟒蛇", pinyin: "mangshe", meaning: "python" },
           { char: "猫头鹰", pinyin: "maotouying", meaning: "owl" },
-          { char: "海豚", pinyin: "haitun", meaning: "dolphin" },
+          { char: "海豚", pinyin: "haitun", meaning: "dolphin" }
+        ]
+      },
+
+      // ── Wave 17: Animals (Part 2) (25 words) ───────────────────
+      {
+        name: "Wave 17: Animals (Part 2)",
+        color: "#aa55cc",
+        words: [
           { char: "鲸鱼", pinyin: "jingyu", meaning: "whale" },
           { char: "鲨鱼", pinyin: "shayu", meaning: "shark" },
           { char: "章鱼", pinyin: "zhangyu", meaning: "octopus" },
@@ -1206,7 +1311,7 @@
         ]
       },
 
-      // ── Wave 18: Nature & Weather (40 words) ─────────────────
+      // ── Wave 18: Nature & Weather (40 words) ───────────────────
       {
         name: "Wave 18: Nature & Weather",
         color: "#33ccaa",
@@ -1254,9 +1359,9 @@
         ]
       },
 
-      // ── Wave 19: Household Items (70 words) ──────────────────
+      // ── Wave 19: Household Items (Part 1) (35 words) ───────────
       {
-        name: "Wave 19: Household Items",
+        name: "Wave 19: Household Items (Part 1)",
         color: "#cc5566",
         words: [
           { char: "房子", pinyin: "fangzi", meaning: "house" },
@@ -1293,7 +1398,15 @@
           { char: "烤箱", pinyin: "kaoxiang", meaning: "oven" },
           { char: "电炉", pinyin: "dianlu", meaning: "electric stove" },
           { char: "炉子", pinyin: "luzi", meaning: "gas stove" },
-          { char: "水槽", pinyin: "shuicao", meaning: "sink" },
+          { char: "水槽", pinyin: "shuicao", meaning: "sink" }
+        ]
+      },
+
+      // ── Wave 19: Household Items (Part 2) (35 words) ───────────
+      {
+        name: "Wave 19: Household Items (Part 2)",
+        color: "#cc5566",
+        words: [
           { char: "热水器", pinyin: "reshuiqi", meaning: "water heater" },
           { char: "厕所", pinyin: "cesuo", meaning: "toilet" },
           { char: "浴缸", pinyin: "yugang", meaning: "bathtub" },
@@ -1332,7 +1445,7 @@
         ]
       },
 
-      // ── Wave 20: Clothing (30 words) ─────────────────────────
+      // ── Wave 20: Clothing (30 words) ───────────────────────────
       {
         name: "Wave 20: Clothing",
         color: "#7788ff",
@@ -1392,16 +1505,16 @@
     }
 
     (function populateWaveSelect() {
-      const randomOpt = document.createElement('option');
-      randomOpt.value = 'random';
-      randomOpt.textContent = 'Random (all themes)';
-      waveSelect.appendChild(randomOpt);
       WAVES.forEach((w, i) => {
         const opt = document.createElement('option');
         opt.value = String(i);
         opt.textContent = themeName(w);
         waveSelect.appendChild(opt);
       });
+      const randomOpt = document.createElement('option');
+      randomOpt.value = 'random';
+      randomOpt.textContent = 'Random (all themes)';
+      waveSelect.insertBefore(randomOpt, waveSelect.options[1]);
     })();
 
     let W, H;
